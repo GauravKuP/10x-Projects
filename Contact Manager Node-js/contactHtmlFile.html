@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Contact Manager</title>
+        <!-- <link rel="stylesheet" href="ContactsMngr.css"> external css doesnt work while 
+        sending file through nodejs.Internal or inline css works. 
+         Ext css working only wn html file is used separately pasting it's path on browser -->
+<style>
+body{
+    background-color:darkcyan;
+    color: aliceblue;
+}
+button{
+cursor: pointer;
+}
+
+input{
+    background-color:mediumturquoise;
+    color: black;
+}
+
+/* nodejs version */
+.CMbody{
+    background-color:cornflowerblue;
+    border: 1px solid;
+    padding: 10px;
+}
+
+/* Tabular version */
+.grandparent{
+    position: relative;
+    /* background-color:burlywood; */
+    /* border: 1px solid; */
+
+}
+#colorParent{
+   background-color:indigo;
+   height: 250px;
+   padding:20px 10px ;
+}
+
+table,th,td{
+    border:2px solid;
+    border-collapse: collapse;
+    height: 30px;
+    /* width: 100px; */
+    text-align: center;
+    padding: 10px;
+}
+
+table{
+    position: absolute;
+    right: 200px;
+    background-color: cornflowerblue;
+    color:brown;
+   
+}
+.changeColor{
+    background-color:darkcyan;
+}
+.block{
+ display: block;
+ height: 20px;
+}
+
+.update{
+   position: absolute;
+    left: 300px;
+}
+
+.add{
+   position: absolute;
+    top: 0px;
+}
+
+
+.searchNremove{
+    position: absolute;
+     left: 300px;
+     margin-top: 50px;
+ }
+
+ .delete{
+    position: absolute;
+     left: 0px;
+     margin-top: 50px;
+ }
+
+/* animation */
+@keyframes sideways{
+    50%{transform: translate(680px,0px);}
+    
+}
+.moveSideway{
+    animation-name: sideways;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+.CMbody input:focus{
+    transform:rotate(360deg);
+    transition-duration: 10s;
+}
+/* @keyframes node{
+    25%{transform: translate(680px,200px),scale(2,2),skew(10deg,20deg);}
+    25%{transform: translate(680px,0px),scale(2,2),skew(10deg,20deg);}
+    25%{transform: translate(-680px,-200px),scale(2,2),skew(10deg,20deg);}
+    25%{transform: translate(0px,0px),scale(2,2),skew(10deg,20deg);}
+}
+
+#nodejsVersion{
+    animation-name: node;
+    animation-duration: 10s;
+    animation-iteration-count: 2;
+    border: 1px solid;
+} */
+
+#nodejsVersion:hover{
+    transform: translate(1100px,0px);
+    /* 25%{transform: translate(680px,0px),scale(2,2),skew(10deg,20deg);}
+    25%{transform: translate(-680px,-200px),scale(2,2),skew(10deg,20deg);}
+    25%{transform: translate(0px,0px),scale(2,2),skew(10deg,20deg);} */
+    animation-duration: 20s;
+    animation-iteration-count:infinite;
+}
+
+
+button:hover{
+    transform: scale(2,2);
+}
+.grandparent input:focus{
+    transform: translate(40px,0px);
+}
+/* tabular heading css not working */
+#TabularHeading{       
+    border: 1x solid;
+}
+.grandparent > h2:hover{
+    transform: translate(500px,200px);
+    
+    transition-duration: 10s;
+
+}
+</style>
+    </head>
+
+    <body>
+        <h1 class="moveSideway">Welcome to the contact manager web appliation</h1>
+        <h2>Description:</h2>
+        <p><h3>Use this app. to store your contacts on the internet. You can see, add, update,
+            delete and search contacts</h3></p>
+
+        <!-- for Nodejs.......................................................... -->
+        <h2 id="nodejsVersion">NodeJs version:</h2>
+
+        <div class="CMbody">
+            <form method="get" action="http://localhost:5000/addContact" target="_blank">
+                <label>SL_No</label>
+               <input type="number" name="SLNo"/>
+                <label>Name</label>
+               <input type="text" name="Name"/>
+               <label>Mob</label>
+               <input type="tel" name="Mob"/>
+               <button type="submit">Add</button>
+             </form> 
+         
+         <br>
+         <br>
+
+         <form method="get" action="http://localhost:5000/updateContact" target="_blank">
+
+            <label>Old Name</label>
+            <input type="text" name="OldName"/>
+            <label>New Name</label>
+            <input type="text"/ name="NewName">
+            <label>Old Number</label>
+            <input type="tel" name="OldNo"/>
+            <label>New Number</label>
+            <input type="tel" name="NewNo"/>
+            <button type="submit">Update</button>
+    
+            </form>
+        <br>
+
+        <section>
+            <span style="font-size:20px ;">See all contacts</span>
+            <a href="http://localhost:5000/showContacts" target="_blank"><button>Show</button></a></span>
+        </section>
+
+<br>
+<form method="get" action="http://localhost:5000/deleteContacts" target="_blank">
+    <label style="font-size: 20px;">Name</label>
+    <input type="text"/ name="Name">
+    <button type="submit">Delete</button>
+</form>
+ <br>
+ <form method="get" action="http://localhost:5000/search" target="_blank">
+    <label style="font-size: 20px;">Search contact by Name</label>
+    <input type="text"/ name="Name">
+    <button type="submit">Search</button>
+</form>
+</div>
+         
+<br>
+
+<!-- Tabular form contacts: .............................................................-->
+
+<div class="grandparent">
+<h2 id="TabularHeading">Contacts Tabular form</h2>
+
+<div id="colorParent">
+<table id="table">
+    <tr>
+    <th>SLNo</th>
+    <th>Name</th>
+    <th>MobNo</th>
+    </tr>
+    </table>
+
+<!-- update row.................................................................. -->
+<div class="grandparent">
+
+<section class="update">
+    <input class="block" type="text" placeholder="enter old name(caseSensitive)"" onchange="searchNameHandler(event)" required/>
+    <input class="block" type="text" placeholder="enter new name"" onchange="updateNameHandler(event)"/>
+    <input class="block" type="tel" placeholder="enter new mobno" onchange="updateMobHandler(event)"/>
+    <button onclick="updateRow()">Update</button>
+</section>
+ <br> 
+
+<!-- add row...........................................................................-->
+<br>
+
+<section class="add">
+<input class="block" type="number" onchange="slhandler(event)" placeholder="slno"/>
+<input class="block" type="text" onchange="namehandler(event)" placeholder="name"/>
+<input class="block" type="tel" onchange="nohandler(event)" placeholder="mobno"/>
+<button onclick="addRow()">add contact</button>
+</section>
+<br>
+<br>
+
+ <!-- search row................................................................. -->
+ <section class="searchNremove">
+    <label>search by name</label>
+    <input class="block" type="text" placeholder="enter name(caseSensitive)"" onchange="searchByNamehandler(event)"/>
+    <button onclick="searchContact()">Search</button>
+    <button onclick="removeSelection()">remove selection</button>
+ </section> 
+
+
+<!-- delete row.................................................................. -->
+<section class="delete">
+    <input class="block" type="text" placeholder="enter name(caseSensitive)"" onchange="deleteHandler(event)"/>
+    <button onclick="delRow()">delete</button>
+</section>
+<br>
+<br>
+</div>
+
+</div>
+
+</div>
+    
+</body>
+
+ 
+
+
+<!-- <script>....................................................................... -->
+    
+    <script>
+let table=document.getElementById('table');
+let rowParents=document.getElementsByTagName('tr');
+var inputarr=[0,'na',0];
+
+function slhandler(event){
+    inputarr[0]=event.target.value;
+}
+function namehandler(event){
+    inputarr[1]=event.target.value;
+}
+function nohandler(event){
+    inputarr[2]=event.target.value;
+}
+
+function addRow(){
+    console.warn(inputarr);
+    let table=document.getElementById('table');
+let rowParents=document.createElement('tr');
+let dataEle;
+for(i=0;i<3;i++)
+{ dataEle=document.createElement('td');
+dataEle.innerHTML=inputarr[i];
+rowParents.appendChild(dataEle);
+}
+table.appendChild(rowParents);
+}
+
+//delete a row........................................................................
+var delName;
+function deleteHandler(event){
+   delName=event.target.value;
+}
+
+function delRow(){
+  for(i=0;i<rowParents.length;i++)
+  {
+    let row=rowParents[i].childNodes;
+    if(row[1].innerHTML==delName)
+   { table.removeChild(rowParents[i]);
+    break;
+   // rowParents[i].removeChild(row[1]);
+   }
+  }
+}
+
+//update a row.......................................................................
+var searchName, newMob,newName;
+
+function searchNameHandler(event){
+   searchName=event.target.value;
+}
+function updateNameHandler(event){
+   newName=event.target.value;
+}
+function updateMobHandler(event){
+   newMob=event.target.value;
+}
+
+function updateRow(){
+    for(let i=0;i<rowParents.length;i++)
+    {  let row=rowParents[i].childNodes;
+        if(searchName==row[1].innerHTML)
+        {   if(newName!=undefined)
+            row[1].innerHTML=newName;
+
+            if(newMob!=undefined)
+            row[2].innerHTML=newMob;
+
+            break;
+        }
+    }
+}
+
+
+//search contact:.............................................................................
+var searchByName;
+function searchByNamehandler(event){
+  searchByName=event.target.value;
+}
+
+function searchContact(){
+    for(let i=0;i<rowParents.length;i++)
+    {  let row=rowParents[i].childNodes;
+        if(searchByName==row[1].innerHTML)
+        {
+            // row[1].innerHTML=newName;
+            // row[2].innerHTML=newMob;
+            rowParents[i].setAttribute('class','changeColor');
+            console.warn(rowParents[i]);
+            break;
+        }
+    }
+}
+
+
+//remove selection:
+function removeSelection(){
+    let classRowParents=document.getElementsByClassName('changeColor');
+console.warn(classRowParents);
+    for(let i=0;i<classRowParents.length;i++)
+    {  classRowParents[i].removeAttribute('class','changeColor');
+        // if(searchByName==row[1].innerHTML)
+        // {
+        //     // row[1].innerHTML=newName;
+        //     // row[2].innerHTML=newMob;
+        //     rowParents[i].setAttribute('id','changeColor');
+        //     console.warn(rowParents[i]);
+        //     break;
+        // }
+    }
+    console.warn(classRowParents);
+}
+
+
+</script>
+</html>
+
+
+
+
+

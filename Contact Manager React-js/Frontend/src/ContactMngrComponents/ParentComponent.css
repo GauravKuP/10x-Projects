@@ -1,0 +1,106 @@
+
+/* showcontacts ............................................*/
+#BgImg{
+    background-image: url('../images/vector-contact-us-background.jpg');
+    background-attachment:fixed ;
+    background-size:cover;
+    height:650px;
+}
+
+.container{
+    
+    /* width:100vw; */
+    
+    /* padding: 10px; */
+    /* margin:20px; */
+   animation-name: wave;
+   animation-duration:40s;
+   animation-iteration-count: infinite;
+}
+@keyframes wave{
+    50%{transform:translate(0px,70px);}
+    /* 50%{transform: translate(0px,0px);} */
+}
+table,th,td{
+    border:1px solid;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+}
+
+.tableStyle{
+/* position: relative;
+left:800px ; */
+text-align: center;
+}
+
+.inlineblock{
+    border:1px double;
+    width:fit-content;
+    padding: 10px;
+    /* margin:10px; */
+    box-shadow:5px 5px 5px 5px burlywood;
+}
+
+/* h2{
+    /* text-decoration: none; */
+
+.inlineblock:hover{
+    transform:translate(10px,10px);
+    border-color: aliceblue;
+    transition-duration: 1s;
+}
+
+#show{
+    position:absolute;
+    top:200px;
+    left:40px;
+}
+#add{
+    position:absolute;
+    left:310px;
+    top:200px;
+}
+
+#update{
+    position:absolute;
+    left:630px;
+    top:200px;
+
+}
+#delete
+{
+    position:absolute;
+    left:1000px;
+    top:200px;
+}
+#search
+{
+    position:absolute;
+    left:1000px;
+    top:335px;
+}
+/* 
+.animation{
+    /* border:1px solid;
+    border:3px solid;
+    height:5px;
+    width:30px;
+    text-align: center;
+    width: fit-content;
+    animation-name: dance;
+    animation-duration:20s;
+    animation-iteration-count:infinite; 
+    
+        }
+ @keyframes dance{
+    25%{transform: translate(96vw,0vh); background-color: antiquewhite;}
+    50%{transform: translate(96vw,93vh); background-color: rgb(139, 153, 153); width:5px; height:30px;}
+    75%{transform: translate(0vw,93vh);background-color: magenta;}
+    100%{transform: translate(0vw,0vh);background-color:chartreuse; width:5px; height:30px;}
+} */
+
+input:hover{
+    background-color: aliceblue;
+}
+

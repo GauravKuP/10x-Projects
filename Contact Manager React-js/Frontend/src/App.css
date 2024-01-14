@@ -1,0 +1,47 @@
+/* FLoat37: */
+#MainHeading{
+  text-align: center;
+  width: fit-content;
+  border:3px double;
+  animation-name: walk;
+  animation-duration:10s;
+  animation-iteration-count:infinite;
+  }
+  @keyframes walk{
+  from{transform: translate(430px,0px);}
+  to{transform: translate(-430px,0px);}
+  /* 50%{transform: translate(-500px,0px);} */
+  }
+
+.P{
+  border: 1px solid;
+  overflow: auto;
+  list-style-type: none;
+  
+}
+
+.C{
+  float:left;
+  padding: 5px 80px;
+  /* background-color: blanchedalmond; */
+  
+}
+
+.para{
+  border:1px solid;
+  overflow: auto;
+}
+
+.img{
+  float: right;
+  height: auto;
+  width: 100px;
+}
+
+#img2{
+  clear:right;
+}
+
+#img3{
+  clear:both;
+}

@@ -1,3 +1,4 @@
+
 const http=require('http');
 const path=require('path');
 const fs=require('fs');
@@ -72,7 +73,7 @@ conn.query('SELECT Name FROM contacts Where Name='+ mysql.escape(OldName),(err,r
             else
            { res.send(`<h2>Updated successfully</h2> \n <h2>Contacts Affected: ${result.affectedRows}</h2>`);
             
-            console.warn(result);}
+           console.warn(result);}
        })
    }
 })
